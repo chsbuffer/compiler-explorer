@@ -87,6 +87,7 @@ describe('Server Config Module', () => {
 
         beforeEach(() => {
             mockWebServer = {
+                engine: vi.fn().mockReturnThis(),
                 set: vi.fn().mockReturnThis(),
                 on: vi.fn().mockReturnThis(),
                 use: vi.fn().mockReturnThis(),

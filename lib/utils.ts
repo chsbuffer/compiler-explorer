@@ -26,7 +26,6 @@ import crypto from 'node:crypto';
 import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
-import {fileURLToPath} from 'node:url';
 import {Buffer} from 'buffer';
 import {ComponentConfig, ItemConfigType} from 'golden-layout';
 import semverParser from 'semver';
@@ -513,13 +512,8 @@ export function splitIntoArray(input?: string, defaultArray: string[] = []): str
     return input.split(':');
 }
 
-/***
- * Absolute path to the root of the application
- */
-export const APP_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-
 export function resolvePathFromAppRoot(...args: string[]) {
-    return path.resolve(APP_ROOT, ...args);
+    return path.resolve('.', ...args);
 }
 
 export async function fileExists(filename: string): Promise<boolean> {

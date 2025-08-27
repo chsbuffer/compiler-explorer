@@ -29,7 +29,7 @@ import {logger} from '../logger.js';
 import {createRenderHandlers} from './rendering.js';
 import {ServerDependencies, ServerOptions, WebServerResult} from './server.interfaces.js';
 import {setupBaseServerConfig, setupBasicRoutes, setupLoggingMiddleware} from './server-config.js';
-import {setupStaticMiddleware, setupWebPackDevMiddleware} from './static-assets.js';
+import {setupStaticMiddleware} from './static-assets.js';
 
 export {startListening} from './server-listening.js';
 export {isMobileViewer} from './url-handlers.js';
@@ -52,9 +52,7 @@ export async function setupWebServer(
     let pugRequireHandler;
 
     try {
-        pugRequireHandler = await (appArgs.devMode
-            ? setupWebPackDevMiddleware(options, router)
-            : setupStaticMiddleware(options, router));
+        pugRequireHandler = await setupStaticMiddleware(options, router);
     } catch (err: unknown) {
         const error = err as Error;
         logger.warn(`Error setting up static middleware: ${error.message}`);

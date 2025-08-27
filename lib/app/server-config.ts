@@ -51,6 +51,7 @@ export function setupBaseServerConfig(
     router: Router,
 ): void {
     webServer
+        .engine('pug', require('pug').__express)
         .set('trust proxy', true)
         .set('view engine', 'pug')
         .on('error', err => logger.error('Caught error in web handler; continuing:', err))

@@ -111,11 +111,7 @@ export function parseCommandLine(argv: string[]): CompilerExplorerOptions {
         .option('--static <dir>', 'Path to static content')
         .option('--no-local', 'Disable local config')
         .option('--version', 'Show version information')
-        .option(
-            '--dev-mode',
-            'Run in dev mode (default if NODE_ENV is not production)',
-            process.env.NODE_ENV !== 'production',
-        );
+        .option('--dev-mode', 'Run in dev mode', process.env.NODE_ENV === 'DEV');
 
     program.parse(argv);
     return program.opts() as CompilerExplorerOptions;

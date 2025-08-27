@@ -18,6 +18,7 @@
     "lib",
     "examples",
     "webpack.config.esm.ts",
+    "webpack.backend.config.ts",
     "cypress"
   ]
 }
